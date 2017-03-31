@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+
     }
 
     /**
@@ -24,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        \App::bind('Pusher',function($app){
+        $keys = $app['config']->get('services.pusher');
+
+        return new \Pusher("430f556a15b28f8e0fd4","87d054a5239ffaebbd1b",'314066',array('cluster'=> 'ap1'));
+        });
     }
 }
